@@ -1,0 +1,71 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.header {
+  background: $color-white;
+}
+
+.main {
+  @include content-area;
+
+  display: flex;
+  align-items: center;
+  height: 72px;
+}
+
+// The search field is centered in the column, so the slots on either side of
+// it have to share the leftover space equally — their own widths differ.
+.side,
+.actions {
+  flex: 1;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 630px;
+  height: 48px;
+  // Asymmetric in the layout: the text starts at 16px, the icon sits 24px in.
+  padding: 0 24px 0 16px;
+  border-radius: 10px;
+  background: $color-off-white;
+
+  input {
+    flex: 1;
+    min-width: 0;
+    border: 0;
+    background: none;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    color: $color-navy;
+
+    &::placeholder {
+      color: $color-gray;
+    }
+
+    // Safari draws its own clear button on search inputs.
+    &::-webkit-search-cancel-button {
+      display: none;
+    }
+  }
+
+  button {
+    display: flex;
+    border: 0;
+    padding: 0;
+    background: none;
+  }
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 32px;
+
+  a {
+    display: flex;
+  }
+}

@@ -1,0 +1,31 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.nav {
+  height: 40px;
+}
+
+.list {
+  @include content-area;
+
+  border-top: 1px solid $color-gray-light;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 91px;
+  height: 100%;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: $color-gray;
+}
+
+.list a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.current {
+  color: $color-purple;
+}
