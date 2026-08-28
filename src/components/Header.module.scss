@@ -1,20 +1,40 @@
-@use '../../styles/variables' as *;
-@use '../../styles/mixins' as *;
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
 
-.header {
-  background: $color-white;
-}
-
-.main {
+.topBar,
+.mainBar,
+.categories {
   @include content-area;
 
   display: flex;
   align-items: center;
+}
+
+.topBar {
+  justify-content: center;
+  gap: 119px;
+  height: 32px;
+  border-bottom: 1px solid $color-gray-light;
+  font-size: 12px;
+  font-weight: 500;
+  color: $color-gray;
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  strong {
+    font-weight: 600;
+    color: $color-purple;
+  }
+}
+
+.mainBar {
   height: 72px;
 }
 
-// The search field is centered in the column, so the slots on either side of
-// it have to share the leftover space equally — their own widths differ.
 .side,
 .actions {
   flex: 1;
@@ -26,7 +46,6 @@
   gap: 8px;
   width: 630px;
   height: 48px;
-  // Asymmetric in the layout: the text starts at 16px, the icon sits 24px in.
   padding: 0 24px 0 16px;
   border-radius: 10px;
   background: $color-off-white;
@@ -45,7 +64,6 @@
       color: $color-gray;
     }
 
-    // Safari draws its own clear button on search inputs.
     &::-webkit-search-cancel-button {
       display: none;
     }
@@ -68,4 +86,25 @@
   a {
     display: flex;
   }
+}
+
+.categories {
+  justify-content: center;
+  gap: 91px;
+  height: 40px;
+  border-top: 1px solid $color-gray-light;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: $color-gray;
+
+  a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+}
+
+.current {
+  color: $color-purple;
 }

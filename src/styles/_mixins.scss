@@ -1,9 +1,5 @@
 @use 'variables' as *;
 
-// Every band of the layout centers its content in the same 1280px column,
-// which the 1440px canvas leaves an 80px gutter around. Sizing the column
-// itself (instead of padding a full-width box) keeps dividers and backgrounds
-// aligned to it, which is how the layout draws them.
 @mixin content-area {
   width: calc(100% - #{$content-gutter * 2});
   max-width: $content-width;
