@@ -1,4 +1,5 @@
 import Banner from './components/Banner'
+import Categories from './components/Categories'
 import Header from './components/Header'
 
 function App() {
@@ -7,6 +8,7 @@ function App() {
       <Header />
       <main>
         <Banner />
+        <Categories />
       </main>
     </>
   )

@@ -1,0 +1,60 @@
+@use '../styles/variables' as *;
+
+.list {
+  display: flex;
+  justify-content: center;
+  gap: 42px;
+  padding-top: 38px;
+}
+
+.list li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 500;
+  color: $color-text-muted;
+  transition: color 0.2s;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 128px;
+  height: 128px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  background: $color-surface;
+  box-shadow: 0 4px 11px 0 rgba(0, 0, 0, 0.13);
+  transition:
+    background-color 0.2s,
+    box-shadow 0.2s;
+}
+
+.icon {
+  width: var(--icon-size);
+  height: var(--icon-size);
+  background: $color-black;
+  mask: var(--icon) center / contain no-repeat;
+  -webkit-mask: var(--icon) center / contain no-repeat;
+  transition: background-color 0.2s;
+}
+
+// The selected category and a hovered one are drawn the same way: the card
+// lifts off the grey, and label and icon take the brand colour.
+.list li:hover,
+.list li.current {
+  color: $color-purple;
+}
+
+.list li:hover .card,
+.list li.current .card {
+  background: $color-white;
+  box-shadow: 0 2px 9px 0 rgba(0, 0, 0, 0.22);
+}
+
+.list li:hover .icon,
+.list li.current .icon {
+  background: $color-purple;
+}
