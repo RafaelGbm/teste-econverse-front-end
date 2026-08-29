@@ -1,3 +1,4 @@
+@use 'sass:color';
 @use '../styles/variables' as *;
 @use '../styles/mixins' as *;
 
@@ -65,4 +66,12 @@
   color: $color-navy;
   font-size: 16px;
   font-weight: 600;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
+
+  &:hover {
+    background: color.adjust($color-yellow, $lightness: -8%);
+    color: $color-purple;
+  }
 }
