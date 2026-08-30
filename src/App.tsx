@@ -37,6 +37,12 @@ function App() {
         />
         <PartnerBanners />
         <Brands />
+        <ProductShowcase
+          title="Produtos relacionados"
+          products={products}
+          status={status}
+          onSelectProduct={setSelectedProduct}
+        />
       </main>
 
       {selectedProduct && (
