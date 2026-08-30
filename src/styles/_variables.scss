@@ -18,6 +18,13 @@ $color-tab-border: #bdbdbd;
 $color-tab-label: #3b3b3b;
 $color-stepper-border: #d9d9d9;
 $color-close: #707070;
+$color-input-border: #e7e7e7;
+$color-placeholder: #676767;
+$color-ink-strong: #161615;
+$color-checkbox-bg: #f6f6f6;
+$color-checkbox-border: #8c342b;
+$color-footer-link: rgba(34, 34, 34, 0.71);
+$color-divider: #e1e1e1;
 $color-gray-light: #f0f0f0;
 $color-off-white: #f6f5f2;
 $color-white: #fff;
@@ -31,8 +38,10 @@ $color-blue-hover: color.adjust($color-blue, $lightness: -8%);
 $hover-transition: 0.2s;
 
 $font-family: 'Poppins', sans-serif;
-// The modal's description and link are set in Work Sans in the design file.
+// The modal's description and the footer links are set in Work Sans.
 $font-family-secondary: 'Work Sans', sans-serif;
+// Only the newsletter heading uses Outfit.
+$font-family-display: 'Outfit', sans-serif;
 
 $content-width: 1280px;
 $content-gutter: 80px;

@@ -2,7 +2,9 @@ import { useCallback, useState } from 'react'
 import Banner from './components/Banner'
 import Brands from './components/Brands'
 import Categories from './components/Categories'
+import Footer from './components/Footer'
 import Header from './components/Header'
+import Newsletter from './components/Newsletter'
 import PartnerBanners from './components/PartnerBanners'
 import ProductModal from './components/ProductModal'
 import ProductShowcase from './components/ProductShowcase'
@@ -43,7 +45,10 @@ function App() {
           status={status}
           onSelectProduct={setSelectedProduct}
         />
+        <Newsletter />
       </main>
+
+      <Footer />
 
       {selectedProduct && (
         <ProductModal product={selectedProduct} onClose={closeModal} />

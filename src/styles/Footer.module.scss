@@ -1,0 +1,103 @@
+@use 'mixins' as *;
+@use 'variables' as *;
+
+.main {
+  background: $color-surface;
+}
+
+.inner {
+  @include content-area;
+
+  display: flex;
+  align-items: center;
+  gap: 90px;
+  padding: 42px 0;
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: 27px;
+}
+
+.identity {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+
+  p {
+    width: 354px;
+    font-size: 14px;
+    font-weight: 300;
+    color: $color-ink;
+  }
+}
+
+.social {
+  display: flex;
+  gap: 26px;
+
+  a {
+    display: flex;
+    transition: opacity $hover-transition;
+
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+}
+
+.divider {
+  width: 1px;
+  height: 198px;
+  background: $color-divider;
+}
+
+.columns {
+  display: flex;
+  gap: 100px;
+  line-height: 16px;
+  color: $color-footer-link;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  h3 {
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    font-family: $font-family-secondary;
+    font-size: 14px;
+  }
+
+  a {
+    transition: color $hover-transition;
+
+    &:hover {
+      color: $color-blue;
+    }
+  }
+}
+
+// The design sets the last column's links in Poppins while the other two use
+// Work Sans. Reproduced as drawn.
+.columns .column:last-child ul {
+  font-family: $font-family;
+}
+
+.copyright {
+  padding: 13px 0;
+  background: $color-white;
+  font-size: 13px;
+  font-weight: 300;
+  color: $color-ink;
+  text-align: center;
+}
