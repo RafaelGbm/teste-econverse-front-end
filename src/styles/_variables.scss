@@ -5,12 +5,25 @@ $color-navy: #271c47;
 $color-gray: #9f9f9f;
 $color-text-muted: #4e4e4e;
 $color-surface: #f4f4f4;
+
+// The showcase uses its own blue and text colours, named "Azul" and "Preto"
+// in the design file — deliberately not the same as $color-purple above.
+$color-blue: #3442b5;
+$color-ink: #3f3f40;
+$color-price-old: #808080;
+$color-rule: #dedede;
+$color-tab-border: #bdbdbd;
+$color-tab-label: #3b3b3b;
+$color-stepper-border: #d9d9d9;
+$color-close: #707070;
 $color-gray-light: #f0f0f0;
 $color-off-white: #f6f5f2;
 $color-white: #fff;
 $color-black: #000;
 
 $font-family: 'Poppins', sans-serif;
+// The modal's description and link are set in Work Sans in the design file.
+$font-family-secondary: 'Work Sans', sans-serif;
 
 $content-width: 1280px;
 $content-gutter: 80px;

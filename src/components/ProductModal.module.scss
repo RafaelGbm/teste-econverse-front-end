@@ -1,0 +1,145 @@
+@use '../styles/variables' as *;
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.54);
+}
+
+.modal {
+  position: relative;
+  display: flex;
+  gap: 87px;
+  width: 769px;
+  height: 299px;
+  padding: 56px 0 0 56px;
+  border-radius: 6px;
+  background: $color-white;
+}
+
+.close {
+  position: absolute;
+  top: 17px;
+  right: 28px;
+  border: 0;
+  padding: 0;
+  background: none;
+  line-height: 0;
+
+  line {
+    stroke: $color-close;
+    stroke-width: 2;
+  }
+}
+
+.photo {
+  flex-shrink: 0;
+  width: 247px;
+  height: 192px;
+  object-fit: contain;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-top: 7px;
+  width: 328px;
+}
+
+.headline {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  font-size: 20px;
+  // The design sets these two lines tight against their own glyphs; the
+  // browser default of roughly 1.5 would add 26px to the column.
+  line-height: 1;
+  letter-spacing: 1px;
+  color: $color-ink;
+
+  h2 {
+    font-size: inherit;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+}
+
+.price {
+  font-weight: 600;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  width: 290px;
+  font-family: $font-family-secondary;
+}
+
+.description {
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 1.505;
+  letter-spacing: 0.5px;
+  color: $color-gray;
+}
+
+.more {
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.55px;
+  color: $color-blue;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.quantity {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 110px;
+  height: 36px;
+  padding: 0 9px;
+  border: 1px solid $color-stepper-border;
+  border-radius: 4px;
+
+  button {
+    display: flex;
+    border: 0;
+    padding: 0;
+    background: none;
+
+    &:disabled {
+      opacity: 0.35;
+      cursor: default;
+    }
+  }
+
+  span {
+    font-size: 16px;
+    font-weight: 500;
+    color: $color-navy;
+  }
+}
+
+.buy {
+  width: 188px;
+  height: 36px;
+  border: 0;
+  border-radius: 6px;
+  background: $color-yellow;
+  font-size: 14px;
+  font-weight: 700;
+  color: $color-navy;
+  text-transform: uppercase;
+}
