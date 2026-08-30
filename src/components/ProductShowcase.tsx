@@ -23,9 +23,11 @@ function ProductShowcase({
   onSelectProduct,
   withTabs = false,
 }: Props) {
-  const [firstVisible, setFirstVisible] = useState(0)
-  const [visibleCards, setVisibleCards] = useState(1)
   const [step, setStep] = useState(0)
+  const [visibleCards, setVisibleCards] = useState(1)
+  const [index, setIndex] = useState(0)
+  const [atStart, setAtStart] = useState(true)
+  const [atEnd, setAtEnd] = useState(false)
   const viewport = useRef<HTMLDivElement>(null)
 
   // Both how far a click travels and how many cards fit are measurements
@@ -48,6 +50,7 @@ function ProductShowcase({
       setVisibleCards(
         Math.max(1, Math.floor((element.clientWidth + CARD_GAP) / cardStep)),
       )
+      setAtEnd(element.scrollLeft >= element.scrollWidth - element.clientWidth - 1)
     }
 
     measure()
@@ -56,10 +59,22 @@ function ProductShowcase({
     return () => observer.disconnect()
   }, [products])
 
-  // Clamping on read keeps the carousel from stranding past the last card
-  // when the window widens and more of them become visible.
-  const lastReachable = Math.max(0, products.length - visibleCards)
-  const offset = Math.min(firstVisible, lastReachable)
+  const readPosition = () => {
+    const element = viewport.current
+    if (!element || !step) {
+      return
+    }
+
+    setIndex(Math.round(element.scrollLeft / step))
+    setAtStart(element.scrollLeft <= 1)
+    setAtEnd(element.scrollLeft >= element.scrollWidth - element.clientWidth - 1)
+  }
+
+  const scrollTo = (position: number) => {
+    viewport.current?.scrollTo({ left: position * step, behavior: 'smooth' })
+  }
+
+  const stops = Math.max(1, products.length - visibleCards + 1)
 
   return (
     <section className={styles.showcase}>
@@ -91,40 +106,58 @@ function ProductShowcase({
       )}
 
       {status === 'ready' && (
-        <div className={styles.carousel}>
-          <button
-            type="button"
-            className={styles.previous}
-            onClick={() => setFirstVisible(offset - 1)}
-            disabled={offset === 0}
-            aria-label="Produtos anteriores"
-          >
-            <img src={arrowIcon} alt="" width={40} height={40} />
-          </button>
-
-          <div className={styles.viewport} ref={viewport}>
-            <ul
-              className={styles.track}
-              style={{ transform: `translateX(-${offset * step}px)` }}
+        <>
+          <div className={styles.carousel}>
+            <button
+              type="button"
+              className={styles.previous}
+              onClick={() => scrollTo(index - 1)}
+              disabled={atStart}
+              aria-label="Produtos anteriores"
             >
-              {products.map((product) => (
-                <li key={product.productName}>
-                  <ProductCard product={product} onSelect={onSelectProduct} />
-                </li>
-              ))}
-            </ul>
+              <img src={arrowIcon} alt="" width={40} height={40} />
+            </button>
+
+            <div
+              className={styles.viewport}
+              ref={viewport}
+              onScroll={readPosition}
+            >
+              <ul className={styles.track}>
+                {products.map((product) => (
+                  <li key={product.productName}>
+                    <ProductCard product={product} onSelect={onSelectProduct} />
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <button
+              type="button"
+              className={styles.next}
+              onClick={() => scrollTo(index + 1)}
+              disabled={atEnd}
+              aria-label="Próximos produtos"
+            >
+              <img src={arrowIcon} alt="" width={40} height={40} />
+            </button>
           </div>
 
-          <button
-            type="button"
-            className={styles.next}
-            onClick={() => setFirstVisible(offset + 1)}
-            disabled={offset === lastReachable}
-            aria-label="Próximos produtos"
-          >
-            <img src={arrowIcon} alt="" width={40} height={40} />
-          </button>
-        </div>
+          {/* Only shown where the carousel is swiped instead of clicked, as
+              the cue that there is more to the side. */}
+          <ol className={styles.dots}>
+            {Array.from({ length: stops }, (_, stop) => (
+              <li key={stop}>
+                <button
+                  type="button"
+                  className={stop === index ? styles.currentDot : undefined}
+                  onClick={() => scrollTo(stop)}
+                  aria-label={`Ir para o produto ${stop + 1}`}
+                />
+              </li>
+            ))}
+          </ol>
+        </>
       )}
     </section>
   )

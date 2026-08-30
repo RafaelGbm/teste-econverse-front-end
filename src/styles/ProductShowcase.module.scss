@@ -108,16 +108,54 @@
   }
 }
 
+// The browser does the scrolling. With the overflow hidden it is not
+// draggable here, but the arrows still move it programmatically.
 .viewport {
   flex: 1;
   min-width: 0;
-  overflow: hidden;
+  overflow-x: hidden;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .track {
   display: flex;
   gap: 18px;
-  transition: transform 0.3s ease;
+
+  > li {
+    scroll-snap-align: start;
+  }
+}
+
+// Position markers, for the widths where the carousel is dragged.
+.dots {
+  display: none;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+
+  button {
+    width: 8px;
+    height: 8px;
+    border: 0;
+    border-radius: 50%;
+    padding: 0;
+    background: $color-tab-border;
+    transition:
+      background-color $hover-transition,
+      width $hover-transition;
+  }
+}
+
+// Matched through `.dots` so it outweighs the button rule above.
+.dots .currentDot {
+  width: 22px;
+  border-radius: 4px;
+  background: $color-blue;
 }
 
 .previous,
@@ -165,24 +203,20 @@
     padding-top: 56px;
   }
 
-  // A 304px card plus two arrows no longer fits across a phone, so the
-  // arrows wrap under the viewport instead of squeezing it.
-  .carousel {
-    flex-wrap: wrap;
-    gap: 16px;
-  }
-
+  // Dragging is the natural gesture here, so the viewport becomes scrollable
+  // by touch and the arrows give way to position markers.
   .viewport {
-    order: 1;
-    flex: 0 0 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
-  .previous {
-    order: 2;
-  }
-
+  .previous,
   .next {
-    order: 3;
+    display: none;
+  }
+
+  .dots {
+    display: flex;
   }
 
   // One card per view, filling the width — a 304px card in a 398px viewport
