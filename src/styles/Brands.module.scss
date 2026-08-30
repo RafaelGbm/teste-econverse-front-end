@@ -17,6 +17,10 @@
   justify-content: center;
   gap: 42px;
   margin-top: 32px;
+  // The design puts the row at x=101.5 rather than the 108.5 a true centre
+  // would give, so it sits seven pixels left of centre.
+  position: relative;
+  right: 7px;
 
   li {
     display: flex;
@@ -39,7 +43,7 @@
 
   img {
     width: 117px;
-    height: auto;
+    height: 34.764px;
   }
 }
 
@@ -48,6 +52,7 @@
 @media (max-width: $bp-lg) {
   .list {
     justify-content: flex-start;
+    right: 0;
     gap: 32px;
     padding-bottom: 8px;
     overflow-x: auto;
