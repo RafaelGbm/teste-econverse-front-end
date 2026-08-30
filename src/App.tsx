@@ -28,6 +28,12 @@ function App() {
           withTabs
         />
         <PartnerBanners />
+        <ProductShowcase
+          title="Produtos relacionados"
+          products={products}
+          status={status}
+          onSelectProduct={setSelectedProduct}
+        />
       </main>
 
       {selectedProduct && (
