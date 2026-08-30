@@ -1,5 +1,6 @@
 import { useCallback, useState } from 'react'
 import Banner from './components/Banner'
+import Brands from './components/Brands'
 import Categories from './components/Categories'
 import Header from './components/Header'
 import PartnerBanners from './components/PartnerBanners'
@@ -35,6 +36,7 @@ function App() {
           onSelectProduct={setSelectedProduct}
         />
         <PartnerBanners />
+        <Brands />
       </main>
 
       {selectedProduct && (

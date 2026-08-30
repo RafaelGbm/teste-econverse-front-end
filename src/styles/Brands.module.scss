@@ -1,0 +1,44 @@
+@use 'variables' as *;
+
+.brands {
+  padding-top: 90px;
+
+  h2 {
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 45px;
+    color: $color-blue;
+    text-align: center;
+  }
+}
+
+.list {
+  display: flex;
+  justify-content: center;
+  gap: 42px;
+  margin-top: 32px;
+
+  li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 211px;
+    height: 211px;
+    border-radius: 50%;
+    background: $color-white;
+    box-shadow: 0 7px 10px 0 rgba(0, 0, 0, 0.13);
+    transition:
+      box-shadow $hover-transition,
+      transform $hover-transition;
+
+    &:hover {
+      box-shadow: 0 9px 16px 0 rgba(0, 0, 0, 0.2);
+      transform: scale(1.02);
+    }
+  }
+
+  img {
+    width: 117px;
+    height: auto;
+  }
+}
