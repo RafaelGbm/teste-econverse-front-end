@@ -1,0 +1,133 @@
+@use 'variables' as *;
+
+.showcase {
+  padding-top: 90px;
+}
+
+// The heading sits between two rules that together span 1138px.
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 34px;
+  width: 1138px;
+  margin: 0 auto;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 45px;
+  color: $color-blue;
+  white-space: nowrap;
+
+  &::before,
+  &::after {
+    content: '';
+    width: 360px;
+    height: 1px;
+    background: $color-rule;
+  }
+}
+
+.seeAll {
+  margin-top: 4px;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 23px;
+  color: $color-ink;
+  text-align: center;
+}
+
+.tabs {
+  display: flex;
+  width: $content-width;
+  margin: 4px auto 0;
+  font-size: 16px;
+  line-height: 16px;
+  text-transform: uppercase;
+
+  li {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    // Pulling each cell one pixel left collapses adjacent borders into one.
+    margin-right: -1px;
+    border: 1px solid $color-tab-border;
+    color: $color-tab-label;
+    cursor: pointer;
+    transition:
+      background-color $hover-transition,
+      color $hover-transition;
+
+    &:hover {
+      background: $color-surface;
+      font-weight: 700;
+      color: $color-blue;
+    }
+  }
+}
+
+// Matched on `.tabs li` so it outweighs the base rule above, which is one
+// element more specific than a bare class would be.
+.tabs li.currentTab {
+  font-weight: 700;
+  color: $color-blue;
+}
+
+.message {
+  margin-top: 24px;
+  font-size: 15px;
+  color: $color-ink;
+  text-align: center;
+}
+
+.carousel {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1364px;
+  margin: 24px auto 0;
+}
+
+.viewport {
+  width: 1270px;
+  overflow: hidden;
+}
+
+.track {
+  display: flex;
+  gap: 18px;
+  transition: transform 0.3s ease;
+}
+
+.previous,
+.next {
+  position: absolute;
+  top: 50%;
+  border: 0;
+  padding: 0;
+  background: none;
+  transition: opacity $hover-transition;
+
+  &:hover:not(:disabled) {
+    opacity: 0.7;
+  }
+
+  &:disabled {
+    opacity: 0.35;
+    cursor: default;
+  }
+}
+
+// The arrow asset is 40px wide but its circle is 32px, offset by 4px for the
+// shadow — nudging by that offset lines the circle up with the frame edge.
+.previous {
+  left: -4px;
+  transform: translateY(-50%);
+}
+
+.next {
+  right: -4px;
+  transform: translateY(-50%) rotate(180deg);
+}

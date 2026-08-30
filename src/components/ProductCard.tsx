@@ -1,6 +1,6 @@
+import styles from '../styles/ProductCard.module.scss'
 import type { Product } from '../types/product'
 import { formatPrice } from '../utils/currency'
-import styles from './ProductCard.module.scss'
 
 // The endpoint carries a single price, but the layout also shows a struck-out
 // list price and an instalment line. Both are derived from it, so the card

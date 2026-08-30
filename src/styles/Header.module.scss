@@ -1,0 +1,125 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.topBar,
+.mainBar,
+.categories {
+  @include content-area;
+
+  display: flex;
+  align-items: center;
+}
+
+.topBar {
+  justify-content: center;
+  gap: 119px;
+  height: 32px;
+  border-bottom: 1px solid $color-gray-light;
+  font-size: 12px;
+  font-weight: 500;
+  color: $color-gray;
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  strong {
+    font-weight: 600;
+    color: $color-purple;
+  }
+}
+
+.mainBar {
+  height: 72px;
+}
+
+.side,
+.actions {
+  flex: 1;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 630px;
+  height: 48px;
+  padding: 0 24px 0 16px;
+  border-radius: 10px;
+  background: $color-off-white;
+
+  &:focus-within {
+    outline: 1px solid $color-purple;
+  }
+
+  input {
+    flex: 1;
+    min-width: 0;
+    border: 0;
+    outline: none;
+    background: none;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    color: $color-navy;
+
+    &::placeholder {
+      color: $color-gray;
+    }
+
+    &::-webkit-search-cancel-button {
+      display: none;
+    }
+  }
+
+  button {
+    display: flex;
+    border: 0;
+    padding: 0;
+    background: none;
+  }
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 32px;
+
+  a {
+    display: flex;
+    transition: opacity $hover-transition;
+
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+}
+
+.categories {
+  justify-content: center;
+  gap: 91px;
+  height: 40px;
+  border-top: 1px solid $color-gray-light;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: $color-gray;
+
+  a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color $hover-transition;
+
+    &:hover {
+      color: $color-purple;
+    }
+  }
+}
+
+.current {
+  color: $color-purple;
+}

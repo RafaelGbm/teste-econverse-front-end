@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 import minusIcon from '../assets/Minus.svg'
 import plusIcon from '../assets/Plus.svg'
+import styles from '../styles/ProductModal.module.scss'
 import type { Product } from '../types/product'
 import { formatPrice } from '../utils/currency'
-import styles from './ProductModal.module.scss'
 
 type Props = {
   product: Product

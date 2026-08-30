@@ -1,0 +1,71 @@
+@use 'variables' as *;
+
+.banners {
+  display: flex;
+  gap: 13px;
+  width: 1281px;
+  margin: 0 auto;
+  padding-top: 90px;
+}
+
+.banner {
+  position: relative;
+  width: 634px;
+  height: 350px;
+  padding: 114px 0 0 44px;
+  border-radius: 20px;
+  background: url('../assets/BannerParceiros.jpg') center / cover no-repeat;
+  color: $color-white;
+
+  // Darkens the lower half so the copy stays readable over the photo.
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 261px;
+    border-radius: 0 0 20px 20px;
+    opacity: 0.8;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000 85.04%);
+  }
+
+  // Lifts the copy above the gradient.
+  > * {
+    position: relative;
+  }
+
+  h2 {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 60px;
+  }
+
+  p {
+    width: 200px;
+    margin-top: 8px;
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+
+.action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 145px;
+  height: 48px;
+  margin-top: 32px;
+  border-radius: 6px;
+  background: $color-yellow;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 1.28px;
+  color: $color-navy;
+  text-transform: uppercase;
+  transition: background-color $hover-transition;
+
+  &:hover {
+    background: $color-yellow-hover;
+  }
+}

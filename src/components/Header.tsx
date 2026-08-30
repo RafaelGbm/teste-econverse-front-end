@@ -1,7 +1,7 @@
 import logo from '../assets/Logo.svg'
 import magnifyingGlassIcon from '../assets/MagnifyingGlass.svg'
 import { actions, categories, currentCategory, notices } from '../data/header'
-import styles from './Header.module.scss'
+import styles from '../styles/Header.module.scss'
 
 function Header() {
   return (

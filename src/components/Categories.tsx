@@ -1,6 +1,6 @@
 import type { CSSProperties } from 'react'
 import { categories, currentCategory } from '../data/categories'
-import styles from './Categories.module.scss'
+import styles from '../styles/Categories.module.scss'
 
 function Categories() {
   return (

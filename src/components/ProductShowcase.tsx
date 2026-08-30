@@ -2,9 +2,9 @@ import { useState } from 'react'
 import arrowIcon from '../assets/CarouselArrow.svg'
 import { currentTab, productTabs } from '../data/showcase'
 import type { FetchStatus } from '../hooks/useProducts'
+import styles from '../styles/ProductShowcase.module.scss'
 import type { Product } from '../types/product'
 import ProductCard from './ProductCard'
-import styles from './ProductShowcase.module.scss'
 
 // Four cards are visible at a time; the arrows advance one card per click.
 const VISIBLE_CARDS = 4
