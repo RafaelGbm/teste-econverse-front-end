@@ -16,7 +16,7 @@
   flex-shrink: 0;
   min-width: 0;
   width: 128px;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 500;
   white-space: nowrap;
   color: $color-text-muted;
@@ -30,13 +30,13 @@
   justify-content: center;
   width: 128px;
   height: 128px;
-  margin-bottom: 20px;
+  margin-bottom: 22px;
   border-radius: 10px;
   background: $color-surface;
   box-shadow: 0 4px 11px 0 rgba(0, 0, 0, 0.13);
   transition:
-    background-color 0.2s,
-    box-shadow 0.2s;
+    background-color $hover-transition,
+    box-shadow $hover-transition;
 }
 
 .icon {
@@ -45,14 +45,18 @@
   background: $color-black;
   mask: var(--icon) center / contain no-repeat;
   -webkit-mask: var(--icon) center / contain no-repeat;
-  transition: background-color 0.2s;
+  transition: background-color $hover-transition;
 }
 
 // The selected category and a hovered one are drawn the same way: the card
-// lifts off the grey, and label and icon take the brand colour.
-// The selected category is already in its final state, so it stays put.
+// lifts off the grey, and label and icon take the brand colour. The selected
+// one is already in its final state, so hovering it changes nothing.
 .list li:hover:not(.current) {
   font-weight: 700;
+}
+
+.list li.current {
+  font-weight: 600;
 }
 
 .list li:hover,
