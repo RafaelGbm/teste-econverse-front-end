@@ -54,10 +54,22 @@
     margin-right: -1px;
     border: 1px solid $color-tab-border;
     color: $color-tab-label;
+    cursor: pointer;
+    transition:
+      background-color $hover-transition,
+      color $hover-transition;
+
+    &:hover {
+      background: $color-surface;
+      font-weight: 700;
+      color: $color-blue;
+    }
   }
 }
 
-.currentTab {
+// Matched on `.tabs li` so it outweighs the base rule above, which is one
+// element more specific than a bare class would be.
+.tabs li.currentTab {
   font-weight: 700;
   color: $color-blue;
 }
@@ -96,6 +108,11 @@
   border: 0;
   padding: 0;
   background: none;
+  transition: opacity $hover-transition;
+
+  &:hover:not(:disabled) {
+    opacity: 0.7;
+  }
 
   &:disabled {
     opacity: 0.35;

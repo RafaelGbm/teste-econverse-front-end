@@ -11,10 +11,17 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  // Width is pinned to the card so a longer or bolder label overflows into
+  // the gap instead of widening the item and shifting its neighbours.
+  flex-shrink: 0;
+  min-width: 0;
+  width: 128px;
   font-size: 16px;
   font-weight: 500;
+  white-space: nowrap;
   color: $color-text-muted;
-  transition: color 0.2s;
+  cursor: pointer;
+  transition: color $hover-transition;
 }
 
 .card {
@@ -43,6 +50,11 @@
 
 // The selected category and a hovered one are drawn the same way: the card
 // lifts off the grey, and label and icon take the brand colour.
+// The selected category is already in its final state, so it stays put.
+.list li:hover:not(.current) {
+  font-weight: 700;
+}
+
 .list li:hover,
 .list li.current {
   color: $color-purple;

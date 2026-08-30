@@ -33,6 +33,11 @@
   line {
     stroke: $color-close;
     stroke-width: 2;
+    transition: stroke $hover-transition;
+  }
+
+  &:hover line {
+    stroke: $color-ink;
   }
 }
 
@@ -95,6 +100,10 @@
   line-height: 1;
   letter-spacing: 0.55px;
   color: $color-blue;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 .actions {
@@ -118,6 +127,11 @@
     border: 0;
     padding: 0;
     background: none;
+    transition: opacity $hover-transition;
+
+    &:hover:not(:disabled) {
+      opacity: 0.6;
+    }
 
     &:disabled {
       opacity: 0.35;
@@ -142,4 +156,9 @@
   font-weight: 700;
   color: $color-navy;
   text-transform: uppercase;
+  transition: background-color $hover-transition;
+
+  &:hover {
+    background: $color-yellow-hover;
+  }
 }

@@ -90,6 +90,11 @@
 
   a {
     display: flex;
+    transition: opacity $hover-transition;
+
+    &:hover {
+      opacity: 0.6;
+    }
   }
 }
 
@@ -107,6 +112,11 @@
     display: flex;
     align-items: center;
     gap: 8px;
+    transition: color $hover-transition;
+
+    &:hover {
+      color: $color-purple;
+    }
   }
 }
 

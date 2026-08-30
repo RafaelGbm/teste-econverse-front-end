@@ -17,11 +17,7 @@ function ProductCard({ product, onSelect }: Props) {
   const { productName, descriptionShort, photo, price } = product
 
   return (
-    <button
-      type="button"
-      className={styles.card}
-      onClick={() => onSelect(product)}
-    >
+    <article className={styles.card}>
       <img className={styles.photo} src={photo} alt={productName} />
 
       <p className={styles.description}>{descriptionShort}</p>
@@ -33,8 +29,14 @@ function ProductCard({ product, onSelect }: Props) {
       </p>
       <p className={styles.shipping}>Frete grátis</p>
 
-      <span className={styles.buy}>Comprar</span>
-    </button>
+      <button
+        type="button"
+        className={styles.buy}
+        onClick={() => onSelect(product)}
+      >
+        Comprar
+      </button>
+    </article>
   )
 }
 
