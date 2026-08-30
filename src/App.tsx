@@ -2,6 +2,7 @@ import { useCallback, useState } from 'react'
 import Banner from './components/Banner'
 import Categories from './components/Categories'
 import Header from './components/Header'
+import PartnerBanners from './components/PartnerBanners'
 import ProductModal from './components/ProductModal'
 import ProductShowcase from './components/ProductShowcase'
 import { useProducts } from './hooks/useProducts'
@@ -26,6 +27,7 @@ function App() {
           onSelectProduct={setSelectedProduct}
           withTabs
         />
+        <PartnerBanners />
       </main>
 
       {selectedProduct && (
