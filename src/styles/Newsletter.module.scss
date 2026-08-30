@@ -117,3 +117,50 @@
     }
   }
 }
+
+@media (max-width: $bp-lg) {
+  .inner {
+    gap: 40px;
+  }
+}
+
+// Text and form stop fitting side by side, so the band grows instead of
+// keeping its drawn height.
+@media (max-width: $bp-md) {
+  .newsletter {
+    height: auto;
+  }
+
+  .inner {
+    flex-direction: column;
+    gap: 24px;
+    padding: 32px 0;
+  }
+
+  .intro {
+    width: 100%;
+  }
+
+  .form {
+    margin-top: 0;
+  }
+}
+
+@media (max-width: $bp-sm) {
+  .newsletter {
+    margin-top: 56px;
+  }
+
+  .intro h2 {
+    font-size: 24px;
+  }
+
+  .fields {
+    flex-direction: column;
+
+    input,
+    button {
+      width: 100%;
+    }
+  }
+}

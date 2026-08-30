@@ -123,3 +123,129 @@
 .current {
   color: $color-purple;
 }
+
+// Below the design width the search can no longer hold its 630px, and the
+// menu no longer fits its 91px gaps.
+@media (max-width: $bp-lg) {
+  .topBar {
+    gap: 40px;
+  }
+
+  .search {
+    flex: 1;
+    width: auto;
+  }
+
+  .side,
+  .actions {
+    flex: 0 0 auto;
+  }
+
+  .categories {
+    gap: 32px;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: $bp-md) {
+  // The three notices cannot share a narrow line, so they take turns in the
+  // same spot: each fades up, holds for three seconds, and fades away.
+  .topBar {
+    position: relative;
+    justify-content: center;
+    gap: 0;
+    overflow: hidden;
+
+    li {
+      position: absolute;
+      inset: 0;
+      justify-content: center;
+      opacity: 0;
+      animation: rotate-notice 9s infinite;
+    }
+
+    li:nth-child(2) {
+      animation-delay: 3s;
+    }
+
+    li:nth-child(3) {
+      animation-delay: 6s;
+    }
+  }
+
+  .mainBar {
+    flex-wrap: wrap;
+    gap: 16px;
+    height: auto;
+    padding: 16px 0;
+  }
+
+  .search {
+    order: 3;
+    flex: none;
+    width: 100%;
+  }
+
+  .side,
+  .actions {
+    flex: 1;
+  }
+
+  .categories {
+    justify-content: flex-start;
+    gap: 28px;
+    overflow-x: auto;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    li {
+      flex: 0 0 auto;
+    }
+  }
+}
+
+@keyframes rotate-notice {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  4%,
+  29% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  33%,
+  100% {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
+
+// Anyone who asked the system for less movement gets the notices stacked
+// instead of cycling.
+@media (max-width: $bp-md) and (prefers-reduced-motion: reduce) {
+  .topBar {
+    flex-wrap: wrap;
+    gap: 4px 24px;
+    height: auto;
+    padding: 6px 0;
+    overflow: visible;
+
+    li {
+      position: static;
+      opacity: 1;
+      animation: none;
+    }
+  }
+}
+
+@media (max-width: $bp-sm) {
+  .actions {
+    gap: 20px;
+  }
+}

@@ -1,17 +1,20 @@
+@use 'mixins' as *;
 @use 'variables' as *;
 
 .showcase {
   padding-top: 90px;
 }
 
-// The heading sits between two rules that together span 1138px.
+// The heading sits between two rules. They take whatever the title leaves
+// over, which is exactly 360px each at the design width.
 .title {
+  @include content-area;
+
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 34px;
-  width: 1138px;
-  margin: 0 auto;
+  max-width: 1138px;
   font-size: 30px;
   font-weight: 700;
   line-height: 45px;
@@ -21,7 +24,8 @@
   &::before,
   &::after {
     content: '';
-    width: 360px;
+    flex: 1;
+    max-width: 360px;
     height: 1px;
     background: $color-rule;
   }
@@ -37,9 +41,10 @@
 }
 
 .tabs {
+  @include content-area;
+
   display: flex;
-  width: $content-width;
-  margin: 4px auto 0;
+  margin-top: 4px;
   font-size: 16px;
   line-height: 16px;
   text-transform: uppercase;
@@ -81,17 +86,31 @@
   text-align: center;
 }
 
+// Arrows and viewport sit side by side instead of being layered, so the
+// viewport simply takes the space the arrows leave.
 .carousel {
-  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 1364px;
+  gap: 7px;
+  width: 100%;
+  max-width: 1364px;
   margin: 24px auto 0;
+
+  // Wider than the 1280 column, so it needs its own gutter rule: without one
+  // the cards would touch the screen edge between 1200 and 1364.
+  @media (max-width: 1364px) {
+    width: calc(100% - 80px);
+  }
+
+  @media (max-width: $bp-sm) {
+    width: calc(100% - 32px);
+  }
 }
 
 .viewport {
-  width: 1270px;
+  flex: 1;
+  min-width: 0;
   overflow: hidden;
 }
 
@@ -103,8 +122,7 @@
 
 .previous,
 .next {
-  position: absolute;
-  top: 50%;
+  flex: 0 0 auto;
   border: 0;
   padding: 0;
   background: none;
@@ -120,14 +138,68 @@
   }
 }
 
-// The arrow asset is 40px wide but its circle is 32px, offset by 4px for the
-// shadow — nudging by that offset lines the circle up with the frame edge.
-.previous {
-  left: -4px;
-  transform: translateY(-50%);
+.next {
+  transform: rotate(180deg);
 }
 
-.next {
-  right: -4px;
-  transform: translateY(-50%) rotate(180deg);
+@media (max-width: $bp-md) {
+  // Six tabs cannot share a narrow row and stay readable, so they keep their
+  // own width and the row scrolls.
+  .tabs {
+    overflow-x: auto;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    li {
+      flex: 0 0 auto;
+      padding: 0 24px;
+    }
+  }
+}
+
+@media (max-width: $bp-sm) {
+  .showcase {
+    padding-top: 56px;
+  }
+
+  // A 304px card plus two arrows no longer fits across a phone, so the
+  // arrows wrap under the viewport instead of squeezing it.
+  .carousel {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .viewport {
+    order: 1;
+    flex: 0 0 100%;
+  }
+
+  .previous {
+    order: 2;
+  }
+
+  .next {
+    order: 3;
+  }
+
+  // One card per view, filling the width — a 304px card in a 398px viewport
+  // leaves a sliver of the next one showing, which reads as a cut-off card.
+  .track > li {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .title {
+    font-size: 22px;
+    white-space: normal;
+    text-align: center;
+
+    &::before,
+    &::after {
+      display: none;
+    }
+  }
 }

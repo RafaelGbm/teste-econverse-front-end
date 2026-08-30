@@ -74,3 +74,26 @@
 .list li.current .icon {
   background: $color-purple;
 }
+
+// The seven cards need 1148px in a row. Wrapping them leaves a ragged second
+// row, so the row scrolls sideways instead and every card keeps its size.
+@media (max-width: $bp-lg) {
+  .list {
+    justify-content: flex-start;
+    gap: 32px;
+    padding-bottom: 8px;
+    overflow-x: auto;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: $bp-sm) {
+  .list {
+    gap: 20px;
+    padding-top: 32px;
+  }
+}

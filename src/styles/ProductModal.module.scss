@@ -7,6 +7,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow-y: auto;
+  padding: 24px 16px;
   background: rgba(0, 0, 0, 0.54);
 }
 
@@ -160,5 +162,50 @@
 
   &:hover {
     background: $color-yellow-hover;
+  }
+}
+
+// Past the design width the card can no longer hold 769x299, so it takes the
+// space available and grows with its own content.
+@media (max-width: $bp-md) {
+  .modal {
+    gap: 32px;
+    width: 100%;
+    height: auto;
+    padding: 48px 24px 32px;
+  }
+
+  .info {
+    flex: 1;
+    min-width: 0;
+    width: auto;
+  }
+
+  .details {
+    width: 100%;
+  }
+}
+
+@media (max-width: $bp-sm) {
+  .modal {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    padding: 48px 20px 24px;
+  }
+
+  .photo {
+    width: 180px;
+    height: 150px;
+  }
+
+  .info {
+    gap: 24px;
+    margin-top: 0;
+    width: 100%;
+  }
+
+  .actions {
+    flex-wrap: wrap;
   }
 }

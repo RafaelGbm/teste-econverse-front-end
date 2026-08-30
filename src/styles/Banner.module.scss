@@ -74,3 +74,62 @@
     color: $color-purple;
   }
 }
+
+// Keeping the ratio below the design width would squeeze the banner shorter
+// than its own text, so height starts coming from the content instead.
+@media (max-width: $bp-lg) {
+  .banner {
+    aspect-ratio: auto;
+    min-height: 390px;
+  }
+}
+
+@media (max-width: $bp-md) {
+  .banner {
+    min-height: 340px;
+
+    // The horizontal fade leaves too little dark area on a narrow screen.
+    &::before {
+      background: linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 0.8) 0%,
+        rgba(0, 0, 0, 0.5) 100%
+      );
+    }
+  }
+
+  .content {
+    padding: 48px 0;
+
+    h1 {
+      font-size: 32px;
+      line-height: 38px;
+    }
+  }
+
+  .offer {
+    margin-top: 12px;
+    font-size: 22px;
+  }
+
+  .button {
+    width: 180px;
+    height: 44px;
+    margin: 28px 0 0;
+  }
+}
+
+@media (max-width: $bp-sm) {
+  .banner {
+    min-height: 300px;
+  }
+
+  .content h1 {
+    font-size: 26px;
+    line-height: 32px;
+  }
+
+  .offer {
+    font-size: 18px;
+  }
+}

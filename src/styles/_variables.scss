@@ -45,3 +45,9 @@ $font-family-display: 'Outfit', sans-serif;
 
 $content-width: 1280px;
 $content-gutter: 80px;
+
+// The design only exists at 1440px. These are the widths where the fixed
+// measurements stop fitting and the layout has to reflow.
+$bp-lg: 1200px;
+$bp-md: 900px;
+$bp-sm: 600px;

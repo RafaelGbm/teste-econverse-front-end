@@ -101,3 +101,42 @@
   color: $color-ink;
   text-align: center;
 }
+
+@media (max-width: $bp-lg) {
+  .inner {
+    gap: 48px;
+  }
+
+  .columns {
+    gap: 48px;
+  }
+}
+
+// The brand block and the three columns stop fitting on one line. Stacked,
+// the vertical rule has nothing left to separate.
+@media (max-width: $bp-md) {
+  .inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+  }
+
+  .divider {
+    display: none;
+  }
+
+  .columns {
+    flex-wrap: wrap;
+    gap: 32px 48px;
+  }
+}
+
+@media (max-width: $bp-sm) {
+  .identity p {
+    width: 100%;
+  }
+
+  .copyright {
+    padding: 13px 16px;
+  }
+}
