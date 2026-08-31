@@ -3,6 +3,8 @@
 Implementação da home da Econverse em React e TypeScript, com a vitrine de
 produtos consumindo o JSON da API e o modal de detalhes do produto.
 
+Publicado em https://teste-econverse-front-end.vercel.app
+
 ## Requisitos
 
 - Node 20.19+ ou 22.12+ (exigência do Vite 8)
