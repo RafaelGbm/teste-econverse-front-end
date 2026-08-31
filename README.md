@@ -90,9 +90,9 @@ A solução foi o servidor do Vite buscar o JSON e repassar para a página, o qu
 torna a requisição de mesma origem. A configuração está no `vite.config.ts`, e
 a aplicação pede `/api/lista-produtos/produtos.json`.
 
-Isso vale em `npm run dev` e `npm run preview`. Numa publicação estática sem
-servidor, o problema retorna e a solução seria uma função de backend fazendo o
-mesmo repasse.
+Isso vale em `npm run dev` e `npm run preview`. Para a publicação na Vercel, o
+`vercel.json` declara a mesma reescrita, que a plataforma resolve no servidor
+dela — sem isso, a vitrine carregaria em desenvolvimento e falharia no ar.
 
 ## Limitações e decisões conscientes
 
